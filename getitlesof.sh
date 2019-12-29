@@ -7,8 +7,8 @@ while IFS= read -r line1
 do
   while IFS= read -r line2
   do
-    line = $line1.$line2
+    line=$line1$line2
     echo -n $line "        "
-    wget -qO- $line | perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si'
+    wget -qO- $line | perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si'.'\n'
   done < "$path" 
 done < "$host"
